@@ -122,6 +122,7 @@ namespace EmployeeApp
             DeleteButton.TabIndex = 4;
             DeleteButton.Text = "Удалить";
             DeleteButton.UseVisualStyleBackColor = false;
+            DeleteButton.Click += DeleteButton_Click;
             // 
             // MainForm
             // 

@@ -12,7 +12,7 @@ namespace EmployeeApp.Models
     {
         public int EmployeeId { get; set; }
         [DisplayName("ФИО")]
-        public string? FullName { get; set; }
+        public string FullName { get; set; } = string.Empty;
         [DisplayName("Дата рождения")]
         public DateTime BirthDate { get; set; }
         public int GenderId { get; set; }
