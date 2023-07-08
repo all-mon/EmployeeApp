@@ -1,3 +1,5 @@
+using EmployeeApp.Data;
+using EmployeeApp.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 

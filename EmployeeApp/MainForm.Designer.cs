@@ -1,4 +1,6 @@
-﻿namespace EmployeeApp
+﻿using EmployeeApp.Models;
+
+namespace EmployeeApp
 {
     partial class MainForm
     {

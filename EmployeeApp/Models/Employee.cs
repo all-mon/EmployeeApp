@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeApp
+namespace EmployeeApp.Models
 {
     public class Employee
     {
@@ -19,6 +19,6 @@ namespace EmployeeApp
 
         public virtual Gender Gender { get; set; } = null!;
 
-        
+
     }
 }
