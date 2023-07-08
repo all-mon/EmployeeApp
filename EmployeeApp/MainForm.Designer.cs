@@ -28,17 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             label1 = new Label();
             dataGridView1 = new DataGridView();
-            FullNameCol = new DataGridViewTextBoxColumn();
-            BirthDateCol = new DataGridViewTextBoxColumn();
-            GenderCol = new DataGridViewTextBoxColumn();
+            employeeBindingSource1 = new BindingSource(components);
+            employeeBindingSource = new BindingSource(components);
             AddButton = new Button();
             EditButton = new Button();
             DeleteButton = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -68,7 +70,6 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { FullNameCol, BirthDateCol, GenderCol });
             dataGridView1.Location = new Point(0, 134);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -77,29 +78,13 @@
             dataGridView1.Size = new Size(1083, 429);
             dataGridView1.TabIndex = 1;
             // 
-            // FullNameCol
+            // employeeBindingSource1
             // 
-            FullNameCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            FullNameCol.HeaderText = "ФИО";
-            FullNameCol.MinimumWidth = 6;
-            FullNameCol.Name = "FullNameCol";
-            FullNameCol.ReadOnly = true;
+            employeeBindingSource1.DataSource = typeof(Employee);
             // 
-            // BirthDateCol
+            // employeeBindingSource
             // 
-            BirthDateCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            BirthDateCol.HeaderText = "Дата рождения";
-            BirthDateCol.MinimumWidth = 6;
-            BirthDateCol.Name = "BirthDateCol";
-            BirthDateCol.ReadOnly = true;
-            // 
-            // GenderCol
-            // 
-            GenderCol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            GenderCol.HeaderText = "Пол";
-            GenderCol.MinimumWidth = 6;
-            GenderCol.Name = "GenderCol";
-            GenderCol.ReadOnly = true;
+            employeeBindingSource.DataSource = typeof(Employee);
             // 
             // AddButton
             // 
@@ -151,6 +136,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -159,11 +146,10 @@
         private Panel panel1;
         private Label label1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn FullNameCol;
-        private DataGridViewTextBoxColumn BirthDateCol;
-        private DataGridViewTextBoxColumn GenderCol;
         private Button AddButton;
         private Button EditButton;
         private Button DeleteButton;
+        private BindingSource employeeBindingSource;
+        private BindingSource employeeBindingSource1;
     }
 }
