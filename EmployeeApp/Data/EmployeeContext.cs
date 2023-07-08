@@ -24,9 +24,9 @@ namespace EmployeeApp.Data
                 new Gender { GenderId = 1, Name = "Мужской" },
                 new Gender { GenderId = 2, Name = "Женский" });
             modelBuilder.Entity<Employee>().HasData(
-                new Employee { EmployeeId = 1, FullName = "Ivanov Ivan Ivanovich", GenderId = 1, BirthDate = DateTime.Parse("1990-01-12") },
-                new Employee { EmployeeId = 2, FullName = "Petrov Petr Ivanovich", GenderId = 1, BirthDate = DateTime.Parse("1990-09-10") },
-                new Employee { EmployeeId = 3, FullName = "Sidorova Olga Ivanovna", GenderId = 2, BirthDate = DateTime.Parse("1990-09-10") }
+                new Employee { EmployeeId = 1, FullName = "Иванов Иван Иванович", GenderId = 1, BirthDate = DateTime.Parse("1990-01-12") },
+                new Employee { EmployeeId = 2, FullName = "Петров Петр Петрович", GenderId = 1, BirthDate = DateTime.Parse("1990-09-10") },
+                new Employee { EmployeeId = 3, FullName = "Сидорова Ольга Николаевна", GenderId = 2, BirthDate = DateTime.Parse("1990-09-10") }
                 );
         }
     }

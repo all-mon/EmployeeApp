@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeApp.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,15 @@ namespace EmployeeApp
 {
     public partial class AddForm : Form
     {
+        private EmployeeContext? dbContext;
         public AddForm()
         {
             InitializeComponent();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -44,7 +44,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(402, 80);
+            panel1.Size = new Size(400, 80);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -92,6 +92,7 @@
             SaveButton.TabIndex = 4;
             SaveButton.Text = "Сохранить";
             SaveButton.UseVisualStyleBackColor = false;
+            SaveButton.Click += SaveButton_Click;
             // 
             // AddForm
             // 
