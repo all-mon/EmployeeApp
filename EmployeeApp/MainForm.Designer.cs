@@ -111,6 +111,7 @@
             AddButton.TabIndex = 2;
             AddButton.Text = "Новый";
             AddButton.UseVisualStyleBackColor = false;
+            AddButton.Click += AddButton_Click;
             // 
             // EditButton
             // 
