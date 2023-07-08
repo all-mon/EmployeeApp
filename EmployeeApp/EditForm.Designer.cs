@@ -1,6 +1,6 @@
 ﻿namespace EmployeeApp
 {
-    partial class AddForm
+    partial class EditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +44,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(402, 80);
+            panel1.Size = new Size(400, 80);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -54,9 +54,9 @@
             label1.ForeColor = SystemColors.ButtonHighlight;
             label1.Location = new Point(15, 20);
             label1.Name = "label1";
-            label1.Size = new Size(351, 38);
+            label1.Size = new Size(242, 38);
             label1.TabIndex = 0;
-            label1.Text = "Добавление сотрудника";
+            label1.Text = "Редактирование";
             // 
             // FullNameTextBox
             // 
@@ -93,7 +93,7 @@
             SaveButton.Text = "Сохранить";
             SaveButton.UseVisualStyleBackColor = false;
             // 
-            // AddForm
+            // EditForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -104,8 +104,8 @@
             Controls.Add(FullNameTextBox);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Name = "AddForm";
-            Text = "Добавление";
+            Name = "EditForm";
+            Text = "Редактирование";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

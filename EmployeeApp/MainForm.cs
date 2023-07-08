@@ -12,5 +12,11 @@ namespace EmployeeApp
             AddForm addForm = new AddForm();
             addForm.ShowDialog();
         }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            EditForm editForm = new EditForm();
+            editForm.ShowDialog();
+        }
     }
 }

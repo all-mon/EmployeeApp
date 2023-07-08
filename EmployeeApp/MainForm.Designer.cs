@@ -123,6 +123,7 @@
             EditButton.TabIndex = 3;
             EditButton.Text = "Изменить";
             EditButton.UseVisualStyleBackColor = false;
+            EditButton.Click += EditButton_Click;
             // 
             // DeleteButton
             // 
