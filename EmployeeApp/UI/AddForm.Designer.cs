@@ -70,7 +70,7 @@
             FullNameTextBox.PlaceholderText = "ФИО";
             FullNameTextBox.Size = new Size(378, 27);
             FullNameTextBox.TabIndex = 1;
-            FullNameTextBox.TextChanged += FullNameTextBox_TextChanged;
+            
             // 
             // birthDateTimePicker
             // 
