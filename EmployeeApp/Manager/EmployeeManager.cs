@@ -34,5 +34,10 @@ namespace EmployeeApp.Manager
         {
             return _employeeGateway.GetAllGender();
         }
+
+        internal List<Employee> Search(string data)
+        {
+            return _employeeGateway.Search(data);
+        }
     }
 }

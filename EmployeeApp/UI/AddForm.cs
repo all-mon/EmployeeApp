@@ -8,7 +8,7 @@ namespace EmployeeApp
         EmployeeManager _employeeManager = new EmployeeManager();
         List<Gender> genders;
         MainForm mainForm;
-        
+
         public AddForm(MainForm mainForm)
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace EmployeeApp
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 if (string.IsNullOrEmpty(FullNameTextBox.Text))

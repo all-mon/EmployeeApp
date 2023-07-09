@@ -1,11 +1,6 @@
 ﻿using EmployeeApp.Data;
 using EmployeeApp.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeApp.Gateway
 {
@@ -40,13 +35,32 @@ namespace EmployeeApp.Gateway
             data.FullName = employee.FullName;
             data.BirthDate = employee.BirthDate;
             data.GenderId = employee.GenderId;
-
-
-            return _dbContext.SaveChanges()>0;
+            return _dbContext.SaveChanges() > 0;
         }
 
         public List<Employee> GetAll() =>  _dbContext.Employees.Include(e => e.Gender).ToList();
-
         public List<Gender> GetAllGender() => _dbContext.Genders.ToList();
+        public List<Employee> Search(string data)
+        {
+            try
+            {
+                DateTime date;
+                if (DateTime.TryParse(data, out date))
+                {
+                   return _dbContext.Employees.Where(d => d.BirthDate == date).ToList();
+                }
+                else
+                {
+                   return _dbContext.Employees.Where(d => d.FullName.Contains(data)).ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+            
+        }
     }
 }

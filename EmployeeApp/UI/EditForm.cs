@@ -26,8 +26,6 @@ namespace EmployeeApp
                     return;
                 }
 
-               
-
                 Employee emp = new Employee
                 {
                     EmployeeId =Int32.Parse( EmployeeIdLabel.Text),
@@ -46,8 +44,7 @@ namespace EmployeeApp
                 {
                     MessageBox.Show("Сотрудник не был обновлен.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                
-               
+                              
             }
             catch (Exception ex)
             {

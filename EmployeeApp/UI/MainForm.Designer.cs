@@ -32,6 +32,8 @@ namespace EmployeeApp
         {
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
+            searchButton = new Button();
+            searchBox = new TextBox();
             label1 = new Label();
             dataGridView1 = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
@@ -52,12 +54,31 @@ namespace EmployeeApp
             // panel1
             // 
             panel1.BackColor = SystemColors.HotTrack;
+            panel1.Controls.Add(searchButton);
+            panel1.Controls.Add(searchBox);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1083, 125);
             panel1.TabIndex = 0;
+            // 
+            // searchButton
+            // 
+            searchButton.Location = new Point(941, 84);
+            searchButton.Name = "searchButton";
+            searchButton.Size = new Size(65, 29);
+            searchButton.TabIndex = 2;
+            searchButton.Text = "Поиск";
+            searchButton.UseVisualStyleBackColor = true;
+            searchButton.Click += searchButton_Click;
+            // 
+            // searchBox
+            // 
+            searchBox.Location = new Point(607, 85);
+            searchBox.Name = "searchBox";
+            searchBox.Size = new Size(328, 27);
+            searchBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -194,5 +215,7 @@ namespace EmployeeApp
         private DataGridViewTextBoxColumn FullName;
         private DataGridViewTextBoxColumn BirthDate;
         private DataGridViewTextBoxColumn Gender;
+        private TextBox searchBox;
+        private Button searchButton;
     }
 }

@@ -1,4 +1,5 @@
 using EmployeeApp.Manager;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EmployeeApp
 {
@@ -23,7 +24,7 @@ namespace EmployeeApp
             dataGridView1.Rows.Clear();
             foreach (var item in employees)
             {
-               dataGridView1.Rows.Add(item.EmployeeId,item.FullName,item.BirthDate.ToString("dd.MM.yyyy"),item.Gender.Name);
+                dataGridView1.Rows.Add(item.EmployeeId, item.FullName, item.BirthDate.ToString("dd.MM.yyyy"), item.Gender.Name);
             }
         }
 
@@ -63,6 +64,39 @@ namespace EmployeeApp
             EmployeeListLoad();
         }
 
-        
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string data = searchBox.Text;
+            if (!string.IsNullOrEmpty(data))
+            {
+                try
+                {
+                    var empList = _employeeManager.Search(data);
+                    if (empList.IsNullOrEmpty())
+                    {
+                        MessageBox.Show("Не найдено", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        EmployeeListLoad();
+                    }
+                    else
+                    {
+                        var employees = empList.ToList();
+                        dataGridView1.Rows.Clear();
+                        foreach (var item in employees)
+                        {
+                            dataGridView1.Rows.Add(item.EmployeeId, item.FullName, item.BirthDate.ToString("dd.MM.yyyy"), item.Gender.Name);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Строка поиска пуста", "Warning",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                EmployeeListLoad();
+            }  
+        }
     }
 }
