@@ -80,13 +80,20 @@ namespace EmployeeApp
 
         private async void DeleteEmployee(int Id)
         {
-            var emp = await dbContext!.Employees.FirstOrDefaultAsync(e=>e.EmployeeId == Id);
-            if (emp != null)
+            try
             {
-                dbContext.Remove(emp);
+                var emp = await dbContext!.Employees.FirstOrDefaultAsync(e => e.EmployeeId == Id);
+                if (emp != null)
+                {
+                    dbContext.Remove(emp);
+                }
+                await dbContext.SaveChangesAsync();
+                EmployeeListLoad();
             }
-            await dbContext.SaveChangesAsync();
-            EmployeeListLoad();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
         }
     }
 }

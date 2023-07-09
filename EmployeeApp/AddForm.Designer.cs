@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             label1 = new Label();
             FullNameTextBox = new TextBox();
             dateTimePicker1 = new DateTimePicker();
-            comboBox1 = new ComboBox();
+            genderComboBox = new ComboBox();
+            genderBindingSource = new BindingSource(components);
             SaveButton = new Button();
+            employeesBindingSource = new BindingSource(components);
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)genderBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeesBindingSource).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -68,19 +73,23 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
             dateTimePicker1.Location = new Point(13, 164);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(182, 27);
+            dateTimePicker1.Size = new Size(117, 27);
             dateTimePicker1.TabIndex = 2;
             // 
-            // comboBox1
+            // genderComboBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Мужской", "Женский" });
-            comboBox1.Location = new Point(13, 213);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(182, 28);
-            comboBox1.TabIndex = 3;
+            genderComboBox.FormattingEnabled = true;
+            genderComboBox.Location = new Point(13, 213);
+            genderComboBox.Name = "genderComboBox";
+            genderComboBox.Size = new Size(182, 28);
+            genderComboBox.TabIndex = 3;
+            // 
+            // genderBindingSource
+            // 
+            genderBindingSource.DataSource = typeof(Models.Gender);
             // 
             // SaveButton
             // 
@@ -94,21 +103,29 @@
             SaveButton.UseVisualStyleBackColor = false;
             SaveButton.Click += SaveButton_Click;
             // 
+            // employeesBindingSource
+            // 
+            employeesBindingSource.DataMember = "Employees";
+            employeesBindingSource.DataSource = genderBindingSource;
+            // 
             // AddForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 450);
             Controls.Add(SaveButton);
-            Controls.Add(comboBox1);
+            Controls.Add(genderComboBox);
             Controls.Add(dateTimePicker1);
             Controls.Add(FullNameTextBox);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "AddForm";
             Text = "Добавление";
+            Load += AddForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)genderBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeesBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -119,7 +136,9 @@
         private Label label1;
         private TextBox FullNameTextBox;
         private DateTimePicker dateTimePicker1;
-        private ComboBox comboBox1;
+        private ComboBox genderComboBox;
         private Button SaveButton;
+        private BindingSource genderBindingSource;
+        private BindingSource employeesBindingSource;
     }
 }
