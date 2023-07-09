@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace EmployeeApp.Models
         [DisplayName("ФИО")]
         public string FullName { get; set; } = string.Empty;
         [DisplayName("Дата рождения")]
+        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
         public int GenderId { get; set; }
 

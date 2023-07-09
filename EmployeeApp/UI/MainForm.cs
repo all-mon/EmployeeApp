@@ -1,4 +1,5 @@
 using EmployeeApp.Data;
+using EmployeeApp.Manager;
 using EmployeeApp.Models;
 using EmployeeApp.ViewModel;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ namespace EmployeeApp
 {
     public partial class MainForm : Form
     {
-        private EmployeeContext? dbContext;
+        private EmployeeManager _employeeManager = new EmployeeManager();
         public MainForm()
         {
             InitializeComponent();
@@ -17,42 +18,17 @@ namespace EmployeeApp
 
         protected override void OnLoad(EventArgs e)
         {
-            base.OnLoad(e);
-            this.dbContext = new EmployeeContext();
-            this.dbContext.Database.EnsureCreated();
             EmployeeListLoad();
         }
 
         public void EmployeeListLoad()
         {
-            List<EmployeeVM> employees = new List<EmployeeVM>();
-            if (this.dbContext != null)
+            var employees = _employeeManager.GetAll();
+            dataGridView1.Rows.Clear();
+            foreach (var item in employees)
             {
-                List<Employee> list = this.dbContext.Employees.Include(e => e.Gender).ToList();
-                foreach (var item in list)
-                {
-                    EmployeeVM employee = new EmployeeVM
-                    {
-                        Id = item.EmployeeId,
-                        FullName = item.FullName,
-                        BirthDate = item.BirthDate,
-                        Gender = item.Gender.Name!
-                    };
-                    employees.Add(employee);
-                }
+               dataGridView1.Rows.Add(item.EmployeeId,item.FullName,item.BirthDate.ToString("dd.MM.yyyy"),item.Gender.Name);
             }
-            dataGridView1.DataSource = employees;
-            dataGridView1.Columns[0].Visible = false;
-        }
-
-       
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-
-            this.dbContext?.Dispose();
-            this.dbContext = null;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -63,7 +39,12 @@ namespace EmployeeApp
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            EditForm editForm = new EditForm();
+            EditForm editForm = new EditForm(this);
+            DataGridViewRow rowData = dataGridView1.SelectedRows[0];
+            editForm.EmployeeIdLabel.Text = rowData.Cells[0].Value.ToString();
+            editForm.FullNameTextBox.Text = rowData.Cells[1].Value.ToString();
+            editForm.birthDateTimePicker.Value = DateTime.Parse(rowData.Cells[2].Value.ToString()!);
+            editForm.genderComboBox.Text = rowData.Cells[3].Value.ToString();
             editForm.ShowDialog();
         }
 
@@ -73,22 +54,19 @@ namespace EmployeeApp
             DeleteEmployee(empId);
         }
 
-        private async void DeleteEmployee(int Id)
+        private void DeleteEmployee(int Id)
         {
             try
             {
-                var emp = await dbContext!.Employees.FirstOrDefaultAsync(e => e.EmployeeId == Id);
-                if (emp != null)
-                {
-                    dbContext.Remove(emp);
-                }
-                await dbContext.SaveChangesAsync();
-                EmployeeListLoad();
+                _employeeManager.Delete(Id);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }
+            EmployeeListLoad();
         }
+
+        
     }
 }

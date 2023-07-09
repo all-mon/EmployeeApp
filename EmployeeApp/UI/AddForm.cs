@@ -1,4 +1,5 @@
 ﻿using EmployeeApp.Data;
+using EmployeeApp.Manager;
 using EmployeeApp.Models;
 using System;
 using System.Collections.Generic;
@@ -14,20 +15,16 @@ namespace EmployeeApp
 {
     public partial class AddForm : Form
     {
-        EmployeeContext context = new EmployeeContext();
+        EmployeeContext _dbContext = new EmployeeContext();
+        EmployeeManager _employeeManager = new EmployeeManager();
         List<Gender> genders;
         MainForm mainForm;
-        public AddForm()
-        {
-            InitializeComponent();
-
-            this.genders = context.Genders.ToList();
-        }
+        
         public AddForm(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            this.genders = context.Genders.ToList();
+            this.genders = _dbContext.Genders.ToList();
         }
         private void AddForm_Load(object sender, EventArgs e)
         {
@@ -56,11 +53,11 @@ namespace EmployeeApp
                     BirthDate = birthDateTimePicker.Value.Date,
                     GenderId = genders[genderComboBox.SelectedIndex].GenderId,
                 };
-                context.Employees.Add(emp);
 
-                if (context.SaveChanges() > 0)
+                if (_employeeManager.Add(emp))
                 {
                     MessageBox.Show("Сотрудник успешно добавлен.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ResetForm();
                 }
                 else
                 {
@@ -72,6 +69,12 @@ namespace EmployeeApp
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ResetForm()
+        {
+            FullNameTextBox.Text = string.Empty;
+            genderComboBox.SelectedIndex = 0;
         }
     }
 }

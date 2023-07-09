@@ -34,6 +34,7 @@
             birthDateTimePicker = new DateTimePicker();
             genderComboBox = new ComboBox();
             SaveButton = new Button();
+            EmployeeIdLabel = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -95,11 +96,22 @@
             SaveButton.UseVisualStyleBackColor = false;
             SaveButton.Click += SaveButton_Click;
             // 
+            // EmployeeIdLabel
+            // 
+            EmployeeIdLabel.AutoSize = true;
+            EmployeeIdLabel.Location = new Point(18, 280);
+            EmployeeIdLabel.Name = "EmployeeIdLabel";
+            EmployeeIdLabel.Size = new Size(52, 20);
+            EmployeeIdLabel.TabIndex = 5;
+            EmployeeIdLabel.Text = "EmpId";
+            EmployeeIdLabel.Visible = false;
+            // 
             // EditForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 450);
+            Controls.Add(EmployeeIdLabel);
             Controls.Add(SaveButton);
             Controls.Add(genderComboBox);
             Controls.Add(birthDateTimePicker);
@@ -118,9 +130,10 @@
 
         private Panel panel1;
         private Label label1;
-        private TextBox FullNameTextBox;
-        private DateTimePicker birthDateTimePicker;
-        private ComboBox genderComboBox;
         private Button SaveButton;
+        public TextBox FullNameTextBox;
+        public DateTimePicker birthDateTimePicker;
+        public ComboBox genderComboBox;
+        public Label EmployeeIdLabel;
     }
 }

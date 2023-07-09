@@ -44,7 +44,7 @@ namespace EmployeeApp.Migrations
 
                     b.HasIndex("GenderId");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
 
                     b.HasData(
                         new
@@ -83,7 +83,7 @@ namespace EmployeeApp.Migrations
 
                     b.HasKey("GenderId");
 
-                    b.ToTable("Genders");
+                    b.ToTable("Genders", (string)null);
 
                     b.HasData(
                         new

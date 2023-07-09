@@ -34,6 +34,10 @@ namespace EmployeeApp
             panel1 = new Panel();
             label1 = new Label();
             dataGridView1 = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            FullName = new DataGridViewTextBoxColumn();
+            BirthDate = new DataGridViewTextBoxColumn();
+            Gender = new DataGridViewTextBoxColumn();
             employeeBindingSource1 = new BindingSource(components);
             employeeBindingSource = new BindingSource(components);
             AddButton = new Button();
@@ -71,17 +75,46 @@ namespace EmployeeApp
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, FullName, BirthDate, Gender });
             dataGridView1.Location = new Point(0, 134);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(1083, 429);
             dataGridView1.TabIndex = 1;
-            
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            // 
+            // FullName
+            // 
+            FullName.HeaderText = "ФИО";
+            FullName.MinimumWidth = 6;
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
+            // 
+            // BirthDate
+            // 
+            BirthDate.HeaderText = "Дата рождения";
+            BirthDate.MinimumWidth = 6;
+            BirthDate.Name = "BirthDate";
+            BirthDate.ReadOnly = true;
+            // 
+            // Gender
+            // 
+            Gender.HeaderText = "Пол";
+            Gender.MinimumWidth = 6;
+            Gender.Name = "Gender";
+            Gender.ReadOnly = true;
             // 
             // employeeBindingSource1
             // 
@@ -157,5 +190,9 @@ namespace EmployeeApp
         private Button DeleteButton;
         private BindingSource employeeBindingSource;
         private BindingSource employeeBindingSource1;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn FullName;
+        private DataGridViewTextBoxColumn BirthDate;
+        private DataGridViewTextBoxColumn Gender;
     }
 }
