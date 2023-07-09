@@ -31,8 +31,8 @@
             panel1 = new Panel();
             label1 = new Label();
             FullNameTextBox = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
-            comboBox1 = new ComboBox();
+            birthDateTimePicker = new DateTimePicker();
+            genderComboBox = new ComboBox();
             SaveButton = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -66,21 +66,22 @@
             FullNameTextBox.Size = new Size(378, 27);
             FullNameTextBox.TabIndex = 1;
             // 
-            // dateTimePicker1
+            // birthDateTimePicker
             // 
-            dateTimePicker1.Location = new Point(13, 164);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(182, 27);
-            dateTimePicker1.TabIndex = 2;
+            birthDateTimePicker.Format = DateTimePickerFormat.Short;
+            birthDateTimePicker.Location = new Point(13, 164);
+            birthDateTimePicker.Name = "birthDateTimePicker";
+            birthDateTimePicker.Size = new Size(115, 27);
+            birthDateTimePicker.TabIndex = 2;
             // 
-            // comboBox1
+            // genderComboBox
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Мужской", "Женский" });
-            comboBox1.Location = new Point(13, 213);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(182, 28);
-            comboBox1.TabIndex = 3;
+            genderComboBox.FormattingEnabled = true;
+            genderComboBox.Items.AddRange(new object[] { "Мужской", "Женский" });
+            genderComboBox.Location = new Point(13, 213);
+            genderComboBox.Name = "genderComboBox";
+            genderComboBox.Size = new Size(182, 28);
+            genderComboBox.TabIndex = 3;
             // 
             // SaveButton
             // 
@@ -92,6 +93,7 @@
             SaveButton.TabIndex = 4;
             SaveButton.Text = "Сохранить";
             SaveButton.UseVisualStyleBackColor = false;
+            SaveButton.Click += SaveButton_Click;
             // 
             // EditForm
             // 
@@ -99,8 +101,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 450);
             Controls.Add(SaveButton);
-            Controls.Add(comboBox1);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(genderComboBox);
+            Controls.Add(birthDateTimePicker);
             Controls.Add(FullNameTextBox);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -117,8 +119,8 @@
         private Panel panel1;
         private Label label1;
         private TextBox FullNameTextBox;
-        private DateTimePicker dateTimePicker1;
-        private ComboBox comboBox1;
+        private DateTimePicker birthDateTimePicker;
+        private ComboBox genderComboBox;
         private Button SaveButton;
     }
 }

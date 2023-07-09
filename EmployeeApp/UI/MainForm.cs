@@ -42,15 +42,10 @@ namespace EmployeeApp
                 }
             }
             dataGridView1.DataSource = employees;
-            DGVSettings();
+            dataGridView1.Columns[0].Visible = false;
         }
 
-        public void DGVSettings()
-        {
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        }
+       
 
         protected override void OnClosing(CancelEventArgs e)
         {
@@ -62,7 +57,7 @@ namespace EmployeeApp
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            AddForm addForm = new AddForm();
+            AddForm addForm = new AddForm(this);
             addForm.ShowDialog();
         }
 

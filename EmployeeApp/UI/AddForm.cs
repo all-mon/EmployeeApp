@@ -16,28 +16,44 @@ namespace EmployeeApp
     {
         EmployeeContext context = new EmployeeContext();
         List<Gender> genders;
+        MainForm mainForm;
         public AddForm()
         {
             InitializeComponent();
+
+            this.genders = context.Genders.ToList();
+        }
+        public AddForm(MainForm mainForm)
+        {
+            InitializeComponent();
+            this.mainForm = mainForm;
             this.genders = context.Genders.ToList();
         }
         private void AddForm_Load(object sender, EventArgs e)
         {
-            
+
             foreach (Gender gender in genders)
             {
                 genderComboBox.Items.Add(gender.Name);
             }
+            genderComboBox.SelectedIndex = 0;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            
             try
             {
+                if (string.IsNullOrEmpty(FullNameTextBox.Text))
+                {
+                    MessageBox.Show("Введите ФИО", "ФИО", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    FullNameTextBox.Focus();
+                    return;
+                }
                 Employee emp = new Employee
                 {
                     FullName = FullNameTextBox.Text,
-                    BirthDate = dateTimePicker1.Value.Date,
+                    BirthDate = birthDateTimePicker.Value.Date,
                     GenderId = genders[genderComboBox.SelectedIndex].GenderId,
                 };
                 context.Employees.Add(emp);
@@ -50,6 +66,7 @@ namespace EmployeeApp
                 {
                     MessageBox.Show("Сотрудник не был добавлен.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                mainForm.EmployeeListLoad();
             }
             catch (Exception ex)
             {

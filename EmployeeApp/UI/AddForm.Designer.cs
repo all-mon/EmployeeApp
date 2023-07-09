@@ -32,7 +32,7 @@
             panel1 = new Panel();
             label1 = new Label();
             FullNameTextBox = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
+            birthDateTimePicker = new DateTimePicker();
             genderComboBox = new ComboBox();
             genderBindingSource = new BindingSource(components);
             SaveButton = new Button();
@@ -71,16 +71,20 @@
             FullNameTextBox.Size = new Size(378, 27);
             FullNameTextBox.TabIndex = 1;
             // 
-            // dateTimePicker1
+            // birthDateTimePicker
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(13, 164);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(117, 27);
-            dateTimePicker1.TabIndex = 2;
+            birthDateTimePicker.Format = DateTimePickerFormat.Short;
+            birthDateTimePicker.Location = new Point(13, 164);
+            birthDateTimePicker.MaxDate = new DateTime(2005, 1, 1, 0, 0, 0, 0);
+            birthDateTimePicker.MinDate = new DateTime(1930, 1, 1, 0, 0, 0, 0);
+            birthDateTimePicker.Name = "birthDateTimePicker";
+            birthDateTimePicker.Size = new Size(115, 27);
+            birthDateTimePicker.TabIndex = 2;
+            birthDateTimePicker.Value = new DateTime(2005, 1, 1, 0, 0, 0, 0);
             // 
             // genderComboBox
             // 
+            genderComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             genderComboBox.FormattingEnabled = true;
             genderComboBox.Location = new Point(13, 213);
             genderComboBox.Name = "genderComboBox";
@@ -115,7 +119,7 @@
             ClientSize = new Size(400, 450);
             Controls.Add(SaveButton);
             Controls.Add(genderComboBox);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(birthDateTimePicker);
             Controls.Add(FullNameTextBox);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -135,7 +139,7 @@
         private Panel panel1;
         private Label label1;
         private TextBox FullNameTextBox;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker birthDateTimePicker;
         private ComboBox genderComboBox;
         private Button SaveButton;
         private BindingSource genderBindingSource;

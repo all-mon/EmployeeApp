@@ -79,6 +79,9 @@ namespace EmployeeApp
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(1083, 429);
             dataGridView1.TabIndex = 1;
+            
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // 
             // employeeBindingSource1
             // 
