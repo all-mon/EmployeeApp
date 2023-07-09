@@ -1,5 +1,6 @@
 ﻿using EmployeeApp.Manager;
 using EmployeeApp.Models;
+using System.Text.RegularExpressions;
 
 namespace EmployeeApp
 {
@@ -33,6 +34,13 @@ namespace EmployeeApp
                 if (string.IsNullOrEmpty(FullNameTextBox.Text))
                 {
                     MessageBox.Show("Введите ФИО", "ФИО", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    FullNameTextBox.Focus();
+                    return;
+                }
+                string pattern = @"^[A-ЯЁ][а-яё]+\s[A-ЯЁ][а-яё]+\s[A-ЯЁ][а-яё]+$"; 
+                if (!Regex.IsMatch(FullNameTextBox.Text, pattern))
+                {
+                    MessageBox.Show("Неверный формат", "ФИО", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     FullNameTextBox.Focus();
                     return;
                 }
