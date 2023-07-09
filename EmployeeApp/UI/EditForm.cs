@@ -1,25 +1,18 @@
 ﻿using EmployeeApp.Manager;
 using EmployeeApp.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace EmployeeApp
 {
     public partial class EditForm : Form
     {
         EmployeeManager _employeeManager = new EmployeeManager();
+        List<Gender> genders;
         MainForm mainForm;
         public EditForm(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
+            this.genders = _employeeManager.GetAllGender();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -32,12 +25,15 @@ namespace EmployeeApp
                     FullNameTextBox.Focus();
                     return;
                 }
+
+               
+
                 Employee emp = new Employee
                 {
                     EmployeeId =Int32.Parse( EmployeeIdLabel.Text),
                     FullName = FullNameTextBox.Text,
                     BirthDate = birthDateTimePicker.Value.Date,
-                    GenderId = _employeeManager.GetAllGender()[genderComboBox.SelectedIndex].GenderId,
+                    GenderId = genders[genderComboBox.SelectedIndex].GenderId,
                 };
 
                 if (_employeeManager.Update(emp))
@@ -50,11 +46,11 @@ namespace EmployeeApp
                 {
                     MessageBox.Show("Сотрудник не был обновлен.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                
                
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

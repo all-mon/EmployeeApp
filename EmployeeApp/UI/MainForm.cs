@@ -1,16 +1,11 @@
-using EmployeeApp.Data;
 using EmployeeApp.Manager;
-using EmployeeApp.Models;
-using EmployeeApp.ViewModel;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace EmployeeApp
 {
     public partial class MainForm : Form
     {
-        private EmployeeManager _employeeManager = new EmployeeManager();
+        EmployeeManager _employeeManager = new EmployeeManager();
+
         public MainForm()
         {
             InitializeComponent();
@@ -23,6 +18,7 @@ namespace EmployeeApp
 
         public void EmployeeListLoad()
         {
+            _employeeManager = new();
             var employees = _employeeManager.GetAll();
             dataGridView1.Rows.Clear();
             foreach (var item in employees)
