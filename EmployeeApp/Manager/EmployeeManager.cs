@@ -1,10 +1,5 @@
 ﻿using EmployeeApp.Gateway;
 using EmployeeApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeApp.Manager
 {
@@ -16,7 +11,7 @@ namespace EmployeeApp.Manager
         {
             return _employeeGateway.Add(employee);
         }
-        public bool Delete(int Id) 
+        public bool Delete(int Id)
         {
             return _employeeGateway.Delete(Id);
         }
@@ -35,7 +30,7 @@ namespace EmployeeApp.Manager
             return _employeeGateway.GetAllGender();
         }
 
-        internal List<Employee> Search(string data)
+        public List<Employee> Search(string data)
         {
             return _employeeGateway.Search(data);
         }

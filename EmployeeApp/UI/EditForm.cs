@@ -5,13 +5,14 @@ namespace EmployeeApp
 {
     public partial class EditForm : Form
     {
-        EmployeeManager _employeeManager = new EmployeeManager();
+        EmployeeManager _employeeManager;
         List<Gender> genders;
         MainForm mainForm;
         public EditForm(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
+            _employeeManager = new EmployeeManager();
             this.genders = _employeeManager.GetAllGender();
         }
 
@@ -28,7 +29,7 @@ namespace EmployeeApp
 
                 Employee emp = new Employee
                 {
-                    EmployeeId =Int32.Parse( EmployeeIdLabel.Text),
+                    EmployeeId = Int32.Parse(EmployeeIdLabel.Text),
                     FullName = FullNameTextBox.Text,
                     BirthDate = birthDateTimePicker.Value.Date,
                     GenderId = genders[genderComboBox.SelectedIndex].GenderId,
@@ -44,7 +45,7 @@ namespace EmployeeApp
                 {
                     MessageBox.Show("Сотрудник не был обновлен.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                              
+
             }
             catch (Exception ex)
             {

@@ -5,21 +5,18 @@ namespace EmployeeApp
 {
     public partial class MainForm : Form
     {
-        EmployeeManager _employeeManager = new EmployeeManager();
-
+        EmployeeManager _employeeManager;
         public MainForm()
         {
             InitializeComponent();
+            _employeeManager = new EmployeeManager();
         }
-
-        protected override void OnLoad(EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             EmployeeListLoad();
         }
-
         public void EmployeeListLoad()
         {
-            _employeeManager = new();
             var employees = _employeeManager.GetAll();
             dataGridView1.Rows.Clear();
             foreach (var item in employees)
@@ -94,9 +91,9 @@ namespace EmployeeApp
             }
             else
             {
-                MessageBox.Show("Строка поиска пуста", "Warning",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Строка поиска пуста", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 EmployeeListLoad();
-            }  
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ namespace EmployeeApp
 {
     public partial class AddForm : Form
     {
-        EmployeeManager _employeeManager = new EmployeeManager();
+        EmployeeManager _employeeManager;
         List<Gender> genders;
         MainForm mainForm;
 
@@ -14,6 +14,7 @@ namespace EmployeeApp
         {
             InitializeComponent();
             this.mainForm = mainForm;
+            _employeeManager = new EmployeeManager();
             this.genders = _employeeManager.GetAllGender();
         }
         private void AddForm_Load(object sender, EventArgs e)
@@ -37,7 +38,7 @@ namespace EmployeeApp
                     FullNameTextBox.Focus();
                     return;
                 }
-                string pattern = @"^[A-ЯЁ][а-яё]+\s[A-ЯЁ][а-яё]+\s[A-ЯЁ][а-яё]+$"; 
+                string pattern = @"^[A-ЯЁ][а-яё]+\s[A-ЯЁ][а-яё]+\s[A-ЯЁ][а-яё]+$";
                 if (!Regex.IsMatch(FullNameTextBox.Text, pattern))
                 {
                     MessageBox.Show("Неверный формат", "ФИО", MessageBoxButtons.OK, MessageBoxIcon.Warning);

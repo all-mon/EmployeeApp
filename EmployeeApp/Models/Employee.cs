@@ -12,7 +12,6 @@ namespace EmployeeApp.Models
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
         public int GenderId { get; set; }
-
         public virtual Gender Gender { get; set; } = null!;
 
 
